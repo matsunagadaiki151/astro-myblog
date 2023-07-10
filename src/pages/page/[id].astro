@@ -1,0 +1,37 @@
+---
+import { getPostsData } from "../../lib/post";
+import MainPage from "../../components/MainPage.astro";
+import { client } from "../../lib/client";
+import { PER_PAGE } from "../../lib/constant";
+
+// 動的なページを作成
+export const getStaticPaths = async () => {
+  const repos = await client.get({ endpoint: "blog" });
+
+  const range = (start: number, end: number) =>
+    [...Array(end - start + 1)].map((_, i) => start + i);
+
+  const paths = range(1, Math.ceil(repos.totalCount / PER_PAGE)).map(
+    (repo) => {
+      return {
+      params: {
+        id: repo
+      }
+    }
+    }
+  );
+
+  return paths;
+};
+
+const { id } = Astro.params
+
+// データを取得
+const matchId = Number(id!);
+
+const postsData = await getPostsData(matchId);
+
+const { allPostsData, totalCount } = postsData.props;
+---
+
+<MainPage allPostsData={allPostsData} totalCount={totalCount}></MainPage>

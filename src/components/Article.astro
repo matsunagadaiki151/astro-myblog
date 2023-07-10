@@ -1,0 +1,29 @@
+---
+import dayjs from "dayjs";
+import React from "react";
+import type { PostData } from "../types/postData";
+
+type Props = {
+  content: PostData;
+};
+
+const { content } = Astro.props;
+---
+<article>
+  <a
+    href={`/posts/${content?.blogId}`}
+    class="flex flex-col space-y-0 md:space-y-2 group duration-300"
+  >
+    <div class="text-lg md:text-4xl  group-hover:text-blue-600/50 duration-300">
+      {content?.title}
+    </div>
+    <div class="flex flex-col object-cover md:flex-row space-y-1 md:space-y-0 md:space-x-4 text-xxs md:text-xs text-giray/50 group-hover:text-blue-600/50 duration-300">
+      <div class="h-xs md:h-auto">
+        投稿日 {dayjs(content.publishedAt).format("YYYY-MM-DD")}
+      </div>
+      <div class="h-xxs md:h-auto">
+        記事更新日 {dayjs(content?.updatedAt).format("YYYY-MM-DD")}
+      </div>
+    </div>
+  </a>
+</article>

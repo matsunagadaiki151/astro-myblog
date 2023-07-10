@@ -1,36 +1,55 @@
----
-export interface Props {
-	title: string;
-}
+---import Footer from "@components/Footer.astro";
+import Document from "./Document.astro";
 
-const { title } = Astro.props;
+const name = "giranaga";
+export const siteTitle = "Girataro Times"
+export const pageTitle = Astro.props;
+
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description">
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
-<style is:global>
-	:root {
-		--accent: 124, 58, 237;
-		--accent-gradient: linear-gradient(45deg, rgb(var(--accent)), #da62c4 30%, white 60%);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background-color: #F6F6F6;
-	}
-	code {
-		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-			Bitstream Vera Sans Mono, Courier New, monospace;
-	}
-</style>
+<Document>
+  <div class="font-body text-giray">
+    <header class=" bg-giray py-4">
+      <div class="flex items-center justify-left md:justify-between ml-6 md:ml-0">
+        <a href="/" class="flex items-center justify-center m-auto">
+          <div class="w-9 h-9 md:w-16 md:h-16 flex items-center">
+            <img
+              src="/images/zirtaro.png"
+              width={68}
+              height={68}
+              alt="girataro"
+              class="bg-white rounded-full"
+            />
+          </div>
+          <h1 class="text-white text-xl md:text-4xl ml-6 hover:text-orange-400 duration-300">
+            {siteTitle}
+          </h1>
+        </a>
+        <div class="flex space-x-2 md:space-x-4 mr-4 md:mr-10 items-center">
+          <a href="https://twitter.com/giranaga">
+            <img
+              src="/images/Twitter social icons - circle - blue.png"
+              width={40}
+              height={40}
+              alt="Twitter"
+              class="w-8 h-8 md:w-14 md:h-14 flex items-center justify-center"
+            />
+          </a>
+          <a href="https://github.com/matsunagadaiki151">
+            <img
+              src="/images/github-mark-white.png"
+              width={40}
+              height={40}
+              alt="github"
+              class="w-8 h-8 md:w-14 md:h-14 flex items-center justify-center"
+            />
+          </a>
+        </div>
+      </div>
+    </header>
+    <main>
+     <slot />
+    </main>
+    <Footer />
+  </div>
+</Document>

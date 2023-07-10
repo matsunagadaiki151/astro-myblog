@@ -19,3 +19,14 @@ pnpm-debug.log*
 
 # macOS-specific files
 .DS_Store
+
+#next-tmp
+next-tmp/
+
+#vscode
+.vscode
+
+.env.*
+.env
+
+public/blog_images

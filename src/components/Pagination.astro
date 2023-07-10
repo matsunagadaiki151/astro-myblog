@@ -1,0 +1,25 @@
+---
+import { PER_PAGE } from "../lib/constant";
+import type { TPage } from "../types/postData";
+import React from "react";
+
+type Props = TPage;
+
+const { totalCount } = Astro.props;
+
+const range = (start: number, end: number) =>
+    [...Array(end - start + 1)].map((_, i) => start + i);
+---
+
+<ul class="inline-flex space-x-2 md:text-3xl w-full pr:8 justify-center mt-10">
+  {range(1, Math.ceil(totalCount / PER_PAGE)).map((number, index) => (
+    <li>
+      <a
+        href={`/page/${number}`}
+        class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700"
+      >
+        {number}
+      </a>
+    </li>
+  ))}
+</ul>

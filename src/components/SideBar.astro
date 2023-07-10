@@ -1,0 +1,33 @@
+---
+type SideBarType = {
+  message: string;
+};
+
+const { message } = Astro.props;
+---
+
+<section class="text-xl py-8 mr-4 md:min-h-screen w-full md:w-1/4">
+  <div class="md:border py-20 md:shadow min-h-full">
+    <div class="flex flex-col space-y-2 md:space-y-4 items-left md:items-center">
+      <div class="text-lg md:text-3xl lg:text-4xl">自己紹介</div>
+      <div class="flex md:flex-col items-center border p-2 md:p-0 md:space-y-2 border-giray/50 md:border-none rounded-xl">
+        <div class="w-1/4 md:w-auto p-3 md:p-0">
+          <div class="w-11 h-11 md:w-16 md:h-16">
+            <img
+              src="/images/zirtaro.png"
+              alt="giratro"
+              width={68}
+              height={68}
+              class="border border-giray rounded-full"
+            ></img>
+          </div>
+        </div>
+        <div class="flex flex-col w-3/4 px-2 md:p-0 items-left md:items-center md:space-y-4">
+          <div class="text-lg md:text-3xl">giranaga</div>
+          <div class="text-xs md:text-xl">{message}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
