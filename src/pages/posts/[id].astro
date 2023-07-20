@@ -2,12 +2,8 @@
 import sanitize from "sanitize-html";
 import Layout from "@layouts/Layout.astro";
 import { getAllPostIds, getPostData } from "../../lib/post";
-import type { PostData, TPaths } from "../../types/postData";
+import type { PostData } from "../../types/postData";
 import dayjs from "dayjs";
-
-type TStaticPaths = {
-  params: { id: string };
-};
 
 export const getStaticPaths = async () => {
   const paths = await getAllPostIds();
