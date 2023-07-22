@@ -1,8 +1,8 @@
 ---
 import { getPostsData } from "../../lib/post";
-import MainPage from "../../components/MainPage.astro";
 import { client } from "../../lib/client";
 import { PER_PAGE } from "../../lib/constant";
+import MainPageLayout from "@layouts/MainPageLayout.astro";
 
 // 動的なページを作成
 export const getStaticPaths = async () => {
@@ -34,4 +34,4 @@ const postsData = await getPostsData(matchId);
 const { allPostsData, totalCount } = postsData.props;
 ---
 
-<MainPage allPostsData={allPostsData} totalCount={totalCount}></MainPage>
+<MainPageLayout allPostsData={allPostsData} totalCount={totalCount}></MainPageLayout>

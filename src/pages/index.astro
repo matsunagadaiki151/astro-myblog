@@ -1,6 +1,6 @@
 ---
 import { getPostsData } from "@lib/post";
-import MainPage from "../components/MainPage.astro";
+import MainPageLayout from "@layouts/MainPageLayout.astro";
 
 const FirstPage = 1;
 
@@ -9,4 +9,4 @@ const allPostsDataProps = await getPostsData(FirstPage);
 const {allPostsData, totalCount} = allPostsDataProps.props;
 ---
 
-<MainPage allPostsData={allPostsData} totalCount={totalCount}></MainPage>
+<MainPageLayout allPostsData={allPostsData} totalCount={totalCount}></MainPageLayout>
