@@ -1,6 +1,5 @@
 ---
-import sanitize from "sanitize-html";
-import Layout from "@layouts/Layout.astro";
+import Layout from "../../layouts/Layout.astro";
 import { getAllPostIds, getPostData } from "../../lib/post";
 import type { PostData } from "../../types/postData";
 import dayjs from "dayjs";
@@ -13,13 +12,11 @@ export const getStaticPaths = async () => {
 const { id } = Astro.params;
 const postData: PostData = await getPostData(id!);
 
-let blogContent = postData.blogContentHTML;
-  if (blogContent === undefined) {
-    blogContent = "<div>Not founded Blog Content</div>";
-  }
-  const __html = sanitize(blogContent, {
-    allowedAttributes: { button: ["class"] },
-  });
+const _blogContent = postData.blogContentHTML;
+let blogContent = "<div>Not founded Blog Content</div>";
+if (_blogContent !== undefined) {
+  blogContent = _blogContent;
+}
 ---
 
 <Layout pageTitle={postData.title}>
@@ -38,7 +35,8 @@ let blogContent = postData.blogContentHTML;
           </div>
         </div>
       </div>
-      <div set:html={blogContent}
+      <div
+        set:html={blogContent}
         class="prose md:prose-xl text-xs md:text-xl py-10 w-full markdown"
       />
       <div class="md:my-10">
@@ -52,4 +50,3 @@ let blogContent = postData.blogContentHTML;
     </article>
   </div>
 </Layout>
-
