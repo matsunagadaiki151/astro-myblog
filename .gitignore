@@ -28,7 +28,9 @@ next-tmp/
 
 .env.*
 .env
+**/.env*
 
 public/blog_images
+scripts
 
 .vscode

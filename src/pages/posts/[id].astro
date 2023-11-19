@@ -20,6 +20,35 @@ if (_blogContent !== undefined) {
 ---
 
 <Layout pageTitle={postData.title}>
+  <style is:global>
+    .markdown h2 {
+      @apply border-0 text-giray text-base md:text-3xl border-b border-gray-300 md:mb-10;
+    }
+
+    .markdown img {
+      @apply block m-auto p-10 w-full;
+    }
+
+    .markdown a {
+      @apply break-words hover:cursor-pointer hover:text-blue-300;
+    }
+
+    .markdown a u {
+      @apply break-words hover:cursor-pointer hover:text-blue-300;
+    }
+
+    .markdown h1 {
+      @apply text-base md:text-4xl md:mb-10;
+    }
+
+    .markdown h3 {
+      @apply text-sm text-giray md:text-2xl border-gray-300;
+    }
+
+    .markdown span.red {
+      @apply text-red-500
+    }
+  </style>
   <div class="md:mt-10 px-4 md:px-24">
     <article class="flex flex-col m-auto max-w-screen-md justify-center">
       <div class="flex flex-col space-y-1 md:space-y-2">
@@ -37,7 +66,7 @@ if (_blogContent !== undefined) {
       </div>
       <div
         set:html={blogContent}
-        class="prose md:prose-xl text-xs md:text-xl py-10 w-full markdown"
+        class="prose md:prose-xl text-xs md:text-xl py-10 w-full markdown text-giray"
       />
       <div class="md:my-10">
         <a
